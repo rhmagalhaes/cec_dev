@@ -7,14 +7,12 @@
     <h1 class="text-center mt-4">Extrato da conta</h1>
     <% end %>
 
+    <h4 class="text-center mt-4"><%= @user.full_name %></h4>
+    <h4 class="text-center mt-4">Saldo Atual: $<%= @balance_actual.balance %> </h4>
+
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Cliente:</th>
-                <th scope="col"><%= @user.full_name %></th>
-                <th>Saldo Atual: $<%= @balance_actual.balance %> </th>
-            </tr>
-            <tr>
+            <tr scope="col" class="text-center col-md-12">
                 <th>Saldo anterior</th>
                 <th>Entradas</th>
                 <th>Saídas</th>
@@ -24,7 +22,7 @@
         </thead>
         <tbody>
             <% @user.account.each do |b| %>
-            <tr>
+            <tr scope="col" class="text-center col-md-12">
                 <td>$<%= b.prev_balance %></td>
                 <td>$<%= b.income %></td>
                 <td>$<%= b.expenses %></td>

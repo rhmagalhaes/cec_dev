@@ -1,0 +1,66 @@
+<div class="jumbotron text-white" id="welcome-container">
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <h1 class="display-4 text-center">Welcome</h1>
+        </div>
+    </div>
+    <!-- ADMIN ONLY -->
+    <% if current_user.test_admin %>  
+        <div class="row">
+            <div class="col-sm">  
+                <div class="row">
+                    <div class="col-sm">
+                        <p class="lead">Total de serviços abertos (Exibir o número de serviços que não tem parceiro)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <p class="lead">Total de serviços em execução (Exibir o número de serviços que já possuem parceiro e não foram concluídos)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>      
+    <!-- CLIENTS ONLY -->
+    <% if current_user.test_client %>  
+        <div class="row">
+            <div class="col-sm">  
+                <div class="row">
+                    <div class="col-sm">
+                        <p class="lead">Propriedades (Exibir somente o nome do condomínio)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <p class="lead">Veículos (Exibir somente o fabricante do veículo)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <p class="lead">Serviço sendo executado (Exibir o serviço que foi agendado pelo cliente logado, já possui um parceiro associado e não foi concluído)</p>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    <% end %>
+    <!-- PARTNERS ONLY -->
+    <% if current_user.test_partner %>  
+        <div class="row">
+            <div class="col-sm">  
+                <div class="row">
+                    <div class="col-sm">
+                        <p class="lead">Total de serviços disponíveis (Exibir o número de serviços disponíveis por tipo)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <p class="lead">Total de serviços executados (Exibir o número de serviços executados por tipo para o parceiro logado)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>    
+</div>
+</div>

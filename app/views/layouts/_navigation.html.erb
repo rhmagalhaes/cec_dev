@@ -1,0 +1,117 @@
+<!-- NAVIGATION BAR - BEGIN -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <%= link_to 'CASA&CONCIERGE', root_path, class: 'navbar-brand'%>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <% if user_signed_in? %>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href=<%=root_path%>>Home<span class="sr-only">(current)</span></a>
+                </li>
+                <!-- MENU FOR ADMIN ONLY -->
+                <% if current_user.test_admin %>
+                <%# <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Serviços
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Agendar Novo Serviço</a>
+                    <a class="dropdown-item" href="#">Lista Serviços Abertos</a>
+                    <a class="dropdown-item" href="#">Lista Serviços Concluídos</a>
+                  </div>
+                </li> %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Financeiro
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href=<%=accounts_path%>>Lista global de transações</a>
+                        <a class="dropdown-item" href=<%=accounts_path%>>Lista de transações por cliente</a>
+                    </div>
+                </li>
+                <%# <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Administração do Sistema
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">CRUD Unidade</a>
+                    <a class="dropdown-item" href="#">CRUD Veículo</a>
+                    <a class="dropdown-item" href="#">Associar Cliente-Veículo</a>
+                    <a class="dropdown-item" href="#">Associar Cliente-Unidade</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">CRUD Serviço</a>
+                    <a class="dropdown-item" href="#">CRUD Tipo de Serviço</a>
+                    <a class="dropdown-item" href="#">Associar Parceiro-Serviço</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">CRUD Nível Parceiro</a>
+                    <a class="dropdown-item" href="#">Associar Parceiro-Nível</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">CRUD Subscription</a>
+                  </div>
+                </li> %>
+                <% end %>
+                <!-- MENU FOR CLIENTS ONLY -->
+                <% if current_user.test_client %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Serviços
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Agendar Novo Serviço</a>
+                        <a class="dropdown-item" href="#">Serviços Abertos</a>
+                        <a class="dropdown-item" href="#">Serviços Concluídos</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Conta
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href=<%=accounts_path%>>Lista de Transações</a>
+                        <a class="dropdown-item" href=<%=reports_path%>>Extrato</a>
+                        <a class="dropdown-item" href="#">Relatório mensal</a>
+                    </div>
+                </li>
+                <% end %>
+                <!-- MENU FOR PARTNERS ONLY -->
+                <% if current_user.test_partner %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Serviços
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Aceitar Serviço</a>
+                        <a class="dropdown-item" href="#">Serviços Abertos</a>
+                        <a class="dropdown-item" href="#">Serviços Concluídos</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Conta
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Extrato</a>
+                        <a class="dropdown-item" href="#">Relatório mensal</a>
+                    </div>
+                </li>
+                <% end %>
+            </ul>
+            <!-- LOGGED USER & LOGOUT BUTTON-->
+            <ul class="navbar-nav ml-auto">
+                <li class='nav-item user-name'>
+                    <%= current_user.full_name %>
+                </li>
+                <li class='nav-item'>
+                    <%= link_to("Logout", destroy_user_session_path, class: "btn btn-sm btn-danger", method: :delete)%>
+                </li>
+            </ul>
+            <% end %>
+        </div>
+
+    </div>
+</nav>
+<!-- NAVIGATION BAR - END -->

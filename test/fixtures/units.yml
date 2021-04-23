@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  building_name: MyString
+  address: MyString
+  contact_name: MyString
+  contact_phone: MyString
+  contact_email: MyString
+  bedrooms: 1
+  bathrooms: 1
+  windows: 1
+  AC_filter_size: MyString
+
+two:
+  building_name: MyString
+  address: MyString
+  contact_name: MyString
+  contact_phone: MyString
+  contact_email: MyString
+  bedrooms: 1
+  bathrooms: 1
+  windows: 1
+  AC_filter_size: MyString

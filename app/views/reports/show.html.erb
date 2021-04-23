@@ -1,0 +1,39 @@
+<div class="container text-center col-md-12" id="page-content">
+    <p id="notice"><%= notice %></p>
+
+    <% if current_user.test_admin %>
+    <h1 class="text-center mt-4">Relatórios de clientes</h1>
+    <% else %>
+    <h1 class="text-center mt-4">Extrato da conta</h1>
+    <% end %>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cliente:</th>
+                <th scope="col"><%= @user.full_name %></th>
+                <th>Saldo Atual: $<%= @balance_actual.balance %> </th>
+            </tr>
+            <tr>
+                <th>Saldo anterior</th>
+                <th>Entradas</th>
+                <th>Saídas</th>
+                <th>Saldo</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @user.account.each do |b| %>
+            <tr>
+                <td>$<%= b.prev_balance %></td>
+                <td>$<%= b.income %></td>
+                <td>$<%= b.expenses %></td>
+                <td>$<%= b.balance %></td>
+                <td><%= b.note %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+
+</div>

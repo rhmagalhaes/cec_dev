@@ -1,0 +1,50 @@
+<div class="container text-center col-md-12" id="page-content">
+    <!--<p id="notice"><%= notice %></p>-->
+
+    <% if current_user.test_admin %>
+    <h1 class="text-center mt-4">Visualizar Contas e Gerenciar atividades</h1>
+    <% else %>
+    <h1><%= current_user.first_name + "'s " if current_user %>Extrato da conta</h1>
+    <% end %>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <% if current_user.test_admin %>
+                <th scope="col" colspan=4><%= sortable "user_id", "Usuário" %></th>
+                <% end %>
+                <th scope="col"><%= sortable "created_at", "Data Cadastro " %></th>
+                <th scope="col" class="text-center">Saldo Anterior</th>
+                <th scope="col" class="text-center">Entrada (+)</th>
+                <th scope="col" class="text-center">Saída (-)</th>
+                <th scope="col" class="text-center">Saldo</th>
+                <th scope="col" class="text-center">Descrição</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @accounts.each do |account| %>
+            <tr>
+                <% if current_user.test_admin %>
+                <td><%= link_to 'Alterar/Excluir', account %></td>
+                <td><%= account.user_id %>
+                <td><%= User.find(account.user_id).first_name %>
+                <td><%= link_to 'Report', report_path(account.user_id) %></td>
+                <% end %>
+                <td scope="col" class="text-center"><%= account.created_at.to_date %></td>
+                <td scope="col" class="text-right">$<%= account.prev_balance %></td>
+                <td scope="col" class="text-right">$<%= account.income %></td>
+                <td scope="col" class="text-right">$<%= account.expenses %></td>
+                <td scope="col" class="text-right">$<%= account.balance %></td>
+                <td scope="col" class="text-left"><%= account.note %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <%= link_to 'Nova Atividade', new_account_path, class: "btn btn-sm btn-primary" %>
+
+    <% if !current_user.test_admin %>
+        <%= link_to 'Relatório', report_path(current_user.id), class: "btn btn-sm btn-primary" %>
+    <% end %>
+    
+</div>

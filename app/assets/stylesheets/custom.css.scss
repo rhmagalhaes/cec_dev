@@ -1,0 +1,103 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+// FOOTER
+
+html,
+body {
+    height: 100%;
+}
+
+#page-content{
+    flex: 1 0 auto;
+    background-color: #e3f2fd;
+}
+
+#sticky-footer{
+    flex-shrink: none;
+}
+
+// NAVIGATION BAR
+
+.navbar-light{
+    background-color: #e3f2fd;
+}
+.nav-link{
+    color: #ffffff;
+}
+
+#logo{
+    float: left;
+    font-size: 1.7em;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+
+// LOGIN PAGE
+
+.login{
+    color: #ffffff;
+    padding: 10px;
+}
+
+// AFTER LOGIN
+
+#welcome-container{
+    margin-top: 25px;
+}
+
+// BACKGROUND CONFIGURATION
+.jumbotron{
+    background-image: asset-url('img01.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+.search-area{
+    padding-top: 50px;
+}
+
+.no-right-padding {
+    padding-right: 0 !important;
+}
+
+.no-left-padding {
+    padding-left: 0 !important;
+}
+
+.results-block {
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+
+// NAVIGATION BAR USER NAME POSITIONING 
+.user-name {
+    margin-top: 3.5%;
+    padding-right: 5px;
+}
+// NAVIGATION BAR LOGOUT BUTTON POSITIONING 
+.logout-button {
+    margin-right: 5px;
+}
+
+// SORT TABLE
+th .current {
+    padding-right: 12px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-size: 10px;
+    background-position-x: 100%;
+  }
+
+th .asc{
+    background-image: asset-url('arrow_up.gif');
+}
+
+th .desc{
+    background-image: asset-url('arrow_down.gif');
+}
+

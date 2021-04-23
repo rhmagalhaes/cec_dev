@@ -1,0 +1,26 @@
+ <%= form_with(model: Account, local: true) do |t| %>
+ 
+ <div class='report'>
+     <%= form_tag '#', method: :get do %>
+     <table class="table table-striped">
+         <thead>
+             <tr>
+                 <% if current_user.test_admin %>
+                    <th class="text-center mt-4">Selecione o cliente</th>
+                    <%= form_with(model: Account, local: true) do |form| %>
+                    <th scope="col" colspan="3"><%= form.select :user_id, User.all.pluck(:first_name,:id),{prompt:'select'},{class: "form-control"}%></th>
+                    <% end %>
+                 <% else %>
+                     <%= hidden_field_tag :user_id, params[:user_id] %>
+                     
+                 <% end %>
+             </tr>
+         </thead>
+     </table>
+     <% end %>
+ </div>
+
+ <%= t.submit "Gerar Relatório", class: 'btn btn-primary' %>
+ <%= link_to 'Voltar', reports_path, class: "btn btn-outline-info" %>
+
+ <% end %>

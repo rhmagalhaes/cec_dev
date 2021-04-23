@@ -1,0 +1,37 @@
+<%= form_with(model: account, local: true) do |form| %>
+  <% if account.errors.any? %>
+    <div id="error_explanation">
+      <h2>ERRO:<%= pluralize(account.errors.count, "error") %></h2>
+
+      <ul>
+        <% account.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <% if current_user.test_admin %>
+          <th scope="col" colspan="3"><%= form.select :user_id, User.all.pluck(:first_name,:id),{prompt:'select'},{class: "form-control"}%></th>
+        <% end %>
+      </tr>
+      <tr>
+        <th scope="col"><%= form.label "Entrada" %></th>
+        <th scope="col"><%= form.label "Saída" %></th>
+        <th scope="col"><%= form.label "Descrição"%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <th><%= form.text_field :income %></th>
+      <th><%= form.text_field :expenses %></th>
+      <th><%= form.text_area :note %></th>
+    </tbody>
+  </table>
+
+  <%= form.submit "Criar Atividade", class: 'btn btn-primary' %>
+  <%= link_to 'Voltar', accounts_path, class: "btn btn-outline-info" %>
+
+<% end %>

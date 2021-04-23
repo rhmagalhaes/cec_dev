@@ -1,0 +1,12 @@
+<div class="container text-center col-md-12" id="page-content">
+    <!--<p id="notice"><%= notice %></p>-->
+
+    <% if current_user.test_admin %>
+    <h1 class="text-center mt-4">Relatórios de clientes</h1>
+    <% else %>
+    <h1 class="text-center mt-4">Extrato da conta</h1>
+    <% end %>
+
+    <%= render 'report', account: @account %>
+
+</div>

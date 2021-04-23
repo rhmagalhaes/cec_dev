@@ -1,0 +1,33 @@
+<div class="container text-center col-md-12" id="page-content">
+<p id="notice"><%= notice %></p>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <% if current_user.test_admin %>
+          <th>Usuário:</th>
+          <th scope="col"><%= @accounts.user.first_name if @accounts.user %></th>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Saldo anterior</th>
+        <th>Entradas</th>
+        <th>Saídas</th>
+        <th>Saldo</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <th>$<%= @account.prev_balance %></th>
+      <th>$<%= @account.income %></th>
+      <th>$<%= @account.expenses %></th>
+      <th>$<%= @account.balance %></th>
+      <th><%= @account.note %></th>
+    </tbody>
+  </table>
+
+
+<%= link_to 'Alterar', edit_account_path(@account), class: 'btn btn-primary' %>
+<%= link_to 'Excluir', @account, class: 'btn btn-danger', method: :delete, data: { confirm: 'Confirmar?' } %>
+<%= link_to 'Voltar', accounts_path, class: "btn btn-outline-info" %>
+</div>
